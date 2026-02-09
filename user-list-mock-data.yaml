@@ -1,0 +1,94 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: eos-dev
+      context: dev
+      changes:
+        # Roles
+        - insert:
+            tableName: roles
+            columns:
+              - column: {name: id, value: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"}
+              - column: {name: name, value: "ADMIN"}
+        - insert:
+            tableName: roles
+            columns:
+              - column: {name: id, value: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a12"}
+              - column: {name: name, value: "USER"}
+
+        # Teams
+        - insert:
+            tableName: teams
+            columns:
+              - column: {name: id, value: "b0eebc99-9c0b-4ef8-bb6d-6bb9bd380a21"}
+              - column: {name: name, value: "Avengers"}
+        - insert:
+            tableName: teams
+            columns:
+              - column: {name: id, value: "b0eebc99-9c0b-4ef8-bb6d-6bb9bd380a22"}
+              - column: {name: name, value: "Justice League"}
+
+        # Users
+        - insert:
+            tableName: users
+            columns:
+              - column: {name: id, value: "c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a31"}
+              - column: {name: first_name, value: "Tony"}
+              - column: {name: last_name, value: "Stark"}
+              - column: {name: email, value: "tony.stark@avengers.com"}
+              - column: {name: role_id, value: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"} # ADMIN
+              - column: {name: is_active, valueBoolean: true}
+        - insert:
+            tableName: users
+            columns:
+              - column: {name: id, value: "c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a32"}
+              - column: {name: first_name, value: "Steve"}
+              - column: {name: last_name, value: "Rogers"}
+              - column: {name: email, value: "steve.rogers@avengers.com"}
+              - column: {name: role_id, value: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a12"} # USER
+              - column: {name: is_active, valueBoolean: true}
+        - insert:
+            tableName: users
+            columns:
+              - column: {name: id, value: "c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a33"}
+              - column: {name: first_name, value: "Bruce"}
+              - column: {name: last_name, value: "Wayne"}
+              - column: {name: email, value: "bruce.wayne@justice.com"}
+              - column: {name: role_id, value: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"} # ADMIN
+              - column: {name: is_active, valueBoolean: true}
+        - insert:
+            tableName: users
+            columns:
+              - column: {name: id, value: "c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a34"}
+              - column: {name: first_name, value: "Clark"}
+              - column: {name: last_name, value: "Kent"}
+              - column: {name: email, value: "clark.kent@justice.com"}
+              - column: {name: role_id, value: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a12"} # USER
+              - column: {name: is_active, valueBoolean: false}
+
+        # Team-User Associations
+        - insert:
+            tableName: team_users
+            columns:
+              - column: {name: team_id, value: "b0eebc99-9c0b-4ef8-bb6d-6bb9bd380a21"} # Avengers
+              - column: {name: user_id, value: "c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a31"} # Tony Stark
+        - insert:
+            tableName: team_users
+            columns:
+              - column: {name: team_id, value: "b0eebc99-9c0b-4ef8-bb6d-6bb9bd380a21"} # Avengers
+              - column: {name: user_id, value: "c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a32"} # Steve Rogers
+        - insert:
+            tableName: team_users
+            columns:
+              - column: {name: team_id, value: "b0eebc99-9c0b-4ef8-bb6d-6bb9bd380a22"} # Justice League
+              - column: {name: user_id, value: "c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a33"} # Bruce Wayne
+        - insert:
+            tableName: team_users
+            columns:
+              - column: {name: team_id, value: "b0eebc99-9c0b-4ef8-bb6d-6bb9bd380a22"} # Justice League
+              - column: {name: user_id, value: "c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a34"} # Clark Kent
+        - insert:
+            tableName: team_users
+            columns:
+              - column: {name: team_id, value: "b0eebc99-9c0b-4ef8-bb6d-6bb9bd380a21"} # Avengers
+              - column: {name: user_id, value: "c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a33"} # Bruce Wayne also in Avengers
